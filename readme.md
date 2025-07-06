@@ -1,38 +1,90 @@
 # Телеграм-бот Stomatology_bot
-Проект телеграм-бота стоматологии. Проект был выполнен в качестве упражнения для самообучения.
+Проект Telegram-бота для стоматологической клиники. Выполнен в качестве учебного проекта для самостоятельного изучения.
 
-### Технологии:
-Приложение разработано на асинхронной библиотеке Aiogram c использованием ORM SQLAlchemy + PostgreSQL.  
+### ⚙ Технологии:
 
-![Main page](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/main_page.png)
+- Python (асинхронный фреймворк **Aiogram**)
+- ORM: **SQLAlchemy**
+- База данных: **PostgreSQL**
+- Docker и docker-compose
+- Деплой на **VPS** 
 
-Бот позволяет просмотреть информацию о стоматологии и оказываемых ею услугах, выбрать подходящего специалиста по интересующей процедуре, 
-произвести запись на прием с выбором необходимой даты. Все полученные данные о записи пациента сохраняются в JSON-файл.  
+### 🚀 Функциональность
 
-| ![Services](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/services.png) | ![Dentist](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/dentist.png) |
-![Reception](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/reception.png)
+- Просмотр информации о клинике и предоставляемых услугах
+- Выбор врача по интересующей процедуре
+- Онлайн-запись на приём с выбором даты
+- Сохранение данных о пациентах в JSON-файл
+- Админ-панель для редактирования информации
+
+### 🖼 Скриншоты
+
+![Главная](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/main_page.png)
+
+| Услуги | Врачи | Запись |
+|:--:|:--:|:--:|
+| ![Услуги](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/services.png) | ![Врачи](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/dentist.png) | ![Запись](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/reception.png) |
+
+Панель администратора:
+
+![Админка](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/admin_pn.png)
 
 
-В проекте также реализована панель администратора, позволяющая редактировать все данные. 
+### 🛠 Установка и запуск:
 
-Использован Docker, docker-compose.yml для развертывания инфраструктуры.   
+1. Откройте терминал и выберите папку, куда Вы будете клонировать Git-репозиторий.  
+   ```bash
+   cd <имя_папки>
+   ```
 
-Произведен деплой проекта на VPS-сервер.
+2. Создайте локальную копию Git-репозитория на Вашем компьютере с помощью команды:   
+   ```bash
+   git clone https://github.com/Oksana-Bachish/bot_stomatology.git
+   ```
 
-### Установка:
-Убедитесь, что у Вас установлен Docker:  
-``` docker ```   
+3. Перейдите в директорию проекта:  
+   ```bash
+   cd bot_stomatology
+   ```
+   
+4. Создайте Telegram-бота через [@BotFather](https://t.me/BotFather) и получите токен.  
+
+5. Создайте файл `.env` в корне проекта:
+   ```bash
+   touch .env
+   ```
+   
+6. Добавьте в `.env` следующие переменные:
+   ```env
+   TOKEN=your_token
+   DB_URL=postgresql+asyncpg://login:password@db_bot:port/db_name
+   POSTGRES_DB=db_name
+   POSTGRES_PASSWORD=password
+   POSTGRES_USER=login
+   POSTGRES_PORT=port
+   ```
+
+7. Убедитесь, что у вас установлен Docker:
+   ```bash
+   docker --version
+   ```
 
 Если докер отсутствует, установите его в соответствии с официальной документацией - https://docs.docker.com/  
 
-Запустите все сервисы с помощью команды:  
-``` docker compose up --build```  
+8. Запустите проект:
+   ```bash
+   docker compose up
+   ```
 
-Данная команда запустит бота на вашем ПК.
+После запуска бот будет доступен в Telegram.
 
-### Сайт: 
-@best_stomatologiya_bot
-![qr-code](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/qr-code.png)
+### 🌐 Сайт
 
-### Автор:
+[Перейти к боту в Telegram](https://t.me/best_stomatologiya_bot)  
+Или отсканируйте QR-код:
+
+![QR-код](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/qr-code.png)
+
+### 👩‍💻 Автор:
 *Оксана Бачиш*
+
