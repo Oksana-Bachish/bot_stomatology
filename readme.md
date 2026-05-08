@@ -62,6 +62,7 @@
    POSTGRES_PASSWORD=password
    POSTGRES_USER=login
    POSTGRES_PORT=port
+   ADMINS=admins_id
    ```
 
 7. Убедитесь, что у вас установлен Docker:
@@ -75,8 +76,19 @@
    ```bash
    docker compose up
    ```
+9. После запуска проекта перейдите в созданного Telegram-бота и войдите в панель администратора с помощью команды:
+   ```bash
+   /admin
+   ```
+10. Заполните первоначальные данные для корректной работы бота:
+   ```
+   добавьте баннеры основного меню (banner)
+   добавьте специалистов (dentist)
+   добавьте изображения услуг (service)
+```
 
-После запуска бот будет доступен в Telegram.
+
+После заполнения первоначальных данных бот будет полностью готов к работе.
 
 ### 🌐 Сайт
 
@@ -86,5 +98,5 @@
 ![QR-код](https://github.com/Oksana-Bachish/bot_stomatology/blob/main/png_for_readme/qr-code.png)
 
 ### 👩‍💻 Автор:
-*Оксана Бачиш*
-
+*Оксана Бачиш*  
+https://github.com/Oksana-Bachish?tab=repositories

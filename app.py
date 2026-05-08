@@ -20,7 +20,8 @@ from handlers.admin_private import admin_router
 
 session = AiohttpSession()
 bot = Bot(token=os.getenv('TOKEN', default=DefaultBotProperties(parse_mode=ParseMode.HTML)), session=session)     #parse_mode - добавляет редактирвание текста
-bot.my_admins_list = []  # -  список администраторов бота
+admins = os.getenv("ADMINS", "")
+bot.my_admins_list = [int(x) for x in admins.split(",") if x]  # -  список администраторов бота
 
 dp = Dispatcher(fsm_strategy=FSMStrategy.USER_IN_CHAT)  # Dispatcher() - главный роутер, отвечает за фильтрацию всех событий, приходящих к боту
 
