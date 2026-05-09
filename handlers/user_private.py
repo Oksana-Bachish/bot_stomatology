@@ -50,14 +50,14 @@ async def reserve(callback: CallbackQuery, callback_data: MenuCallBack, session:
     await add_to_reserve(session, user_id=callback.from_user.id, dentist_id=callback_data.dentist_id, date=None)
     if not user:  # если пользователь не зарегистрирован, производим регистрацию
         await get_registration(callback, state)
-    else:  # иначе, уточняем личные данные
+    else:
         await callback.message.answer(f'Подтведите Ваши личные данные: {user.first_name.capitalize()} '
-                                      f'{user.last_name.capitalize()}. \nНомер телефона: {user.phone}',
-                                      reply_markup=get_callback_btns(
-                                          btns={
-                                              "Все верно": "correct_user_data",
-                                              "Изменить": f"change_user_data",
-                                          }, sizes=(2,)),)
+                                          f'{user.last_name.capitalize()}. \nНомер телефона: {user.phone}',
+                                          reply_markup=get_callback_btns(
+                                              btns={
+                                                  "Все верно": "correct_user_data",
+                                                  "Изменить": f"change_user_data",
+                                              }, sizes=(2,)),)
 
 
 @user_private_router.callback_query(F.data.startswith('correct_user_data'))
@@ -117,6 +117,20 @@ async def reg_contact(message: Message, state: FSMContext, session: AsyncSession
     data = await state.get_data()
     await orm_update_user(session, message.from_user.id, data)
     await message.answer(f'Ваши данные успешно сохранены.', reply_markup=types.ReplyKeyboardRemove())
+    await state.clear()
+    await message.answer('Нажмите на кнопку "Календарь" для выбора даты', reply_markup=select_date)
+
+
+@user_private_router.message(Register.contact)
+async def reg_contact_manual(message: Message, state: FSMContext, session: AsyncSession):
+    phone = message.text.strip()
+    if not phone.startswith('+') or len(phone) < 10:
+        await message.answer('Введите корректный номер телефона')
+        return
+    await state.update_data(contact=phone)
+    data = await state.get_data()
+    await orm_update_user(session, message.from_user.id, data)
+    await message.answer('Ваши данные успешно сохранены.', reply_markup=types.ReplyKeyboardRemove())
     await state.clear()
     await message.answer('Нажмите на кнопку "Календарь" для выбора даты', reply_markup=select_date)
 
