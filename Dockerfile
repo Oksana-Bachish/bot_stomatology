@@ -10,15 +10,15 @@ RUN apt-get update && apt-get install -y locales &&  \
     apt-get install -y libpq-dev build-essential &&  \
     apt-get install -y netcat-openbsd
 
-RUN pip install --upgrade pip
+RUN pip install --no-cache-dir uv
 
 ENV PYTHONUNBUFFERED=1
 ENV LANG ru_RU.UTF-8
 ENV LC_ALL ru_RU.UTF-8
 
-COPY requirements.txt .
+COPY pyproject.toml .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN uv pip install --system --no-cache -e ".[dev]"
 
 COPY . .
 

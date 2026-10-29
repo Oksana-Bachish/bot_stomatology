@@ -1,0 +1,72 @@
+[project]
+name = "dental-clinic-telegram-bot"
+version = "0.1.0"
+description = "Asynchronous Telegram bot for online patient appointments using aiogram 3, SQLAlchemy and PostgreSQL"
+requires-python = ">=3.10"
+dependencies = [
+    'aiofiles==23.2.1',
+    'aiogram==3.13.0',
+    'aiogram-calendar==0.5.0',
+    'aiohappyeyeballs==2.4.0',
+    'aiohttp==3.10.5',
+    'aiosignal==1.3.1',
+    'aiosqlite==0.20.0',
+    'annotated-types==0.7.0',
+    'asgiref',
+    'asttokens==2.4.1',
+    'async-timeout==4.0.3',
+    'asyncpg==0.29.0',
+    'attrs==24.2.0',
+    'certifi==2024.8.30',
+    'colorama==0.4.6',
+    'cycler==0.11.0',
+    'decorator==5.1.1',
+    'Django==5.1.4',
+    'django-debug-toolbar==4.3.0',
+    'django-extensions==3.2.3',
+    'exceptiongroup==1.2.0',
+    'executing==2.0.1',
+    'fonttools==4.34.4',
+    'frozenlist==1.4.1',
+    'greenlet==3.1.0',
+    'idna==3.8',
+    'ipython==8.22.1',
+    'jedi==0.19.1',
+    'kiwisolver==1.4.4',
+    'magic-filter==1.0.12',
+    'matplotlib==3.5.2',
+    'matplotlib-inline==0.1.6',
+    'multidict==6.0.5',
+    'numpy==1.23.1',
+    'packaging==21.3',
+    'parso==0.8.3',
+    'Pillow==9.2.0',
+    'prompt-toolkit==3.0.43',
+    'propcache==0.2.1',
+    'pure-eval==0.2.2',
+    'pydantic==2.8.2',
+    'pydantic_core==2.20.1',
+    'Pygments==2.17.2',
+    'pyparsing==3.0.9',
+    'python-dateutil==2.8.2',
+    'python-dotenv==1.0.1',
+    'six==1.16.0',
+    'SQLAlchemy==2.0.34',
+    'sqlparse==0.4.3',
+    'stack-data==0.6.3',
+    'traitlets==5.14.1',
+    'typing_extensions==4.12.2',
+    'tzdata==2022.6',
+    'wcwidth==0.2.13',
+    'yarl==1.10.0',
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.1.1",
+    "pytest-asyncio>=0.23.5",
+    "pytest-mock"
+]
+
+[tool.setuptools]
+packages = { find = { exclude = ["locales*", "static*", "media*", "img*", "png_for_readme*"] } }

@@ -1,6 +1,8 @@
 services:
   bot:
-    build: .
+    build:
+      context: ./bot_stomatology
+      dockerfile: Dockerfile.prod
     container_name: bot
     restart: unless-stopped
     env_file:
