@@ -226,7 +226,7 @@ async def save_json(data):
 
 ################### Завершение записи пользователя ####################
 @user_private_router.callback_query(F.data.startswith('end_recording'))
-async def recording(callback: CallbackQuery, ):
+async def end_recording(callback: CallbackQuery, ):
     await callback.message.answer(
         f'Ваш запрос принят. Скоро наш администратор свяжется с Вами для уточнения деталей записи')
 
